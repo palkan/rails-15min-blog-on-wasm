@@ -127,6 +127,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    js (2.7.0)
     json (2.9.0)
     kamal (2.4.0)
       activesupport (>= 7.0)
@@ -272,6 +273,13 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
+    ruby_wasm (2.7.0)
+    ruby_wasm (2.7.0-aarch64-linux)
+    ruby_wasm (2.7.0-aarch64-linux-musl)
+    ruby_wasm (2.7.0-arm64-darwin)
+    ruby_wasm (2.7.0-x86_64-darwin)
+    ruby_wasm (2.7.0-x86_64-linux)
+    ruby_wasm (2.7.0-x86_64-linux-musl)
     rubyzip (2.3.2)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
@@ -336,11 +344,17 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2024.2)
+      tzinfo (>= 1.0.0)
     unicode-display_width (3.1.2)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.2)
     useragent (0.16.11)
+    wasmify-rails (0.2.0)
+      js (>= 2.6, < 3.0)
+      railties (>= 7.0, < 9.0)
+      ruby_wasm (>= 2.6, < 3.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -391,6 +405,8 @@ DEPENDENCIES
   tailwindcss-rails
   thruster
   turbo-rails
+  tzinfo-data
+  wasmify-rails (~> 0.2.0)
   web-console
 
 BUNDLED WITH

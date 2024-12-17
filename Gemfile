@@ -15,7 +15,7 @@ gem "turbo-rails", group: [:default, :wasm]
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", group: [:default, :wasm]
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails", group: [:default, :wasm]
+gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder", group: [:default, :wasm]
 
@@ -62,4 +62,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+gem "wasmify-rails", "~> 0.2.0", group: [:default, :wasm]
+
+group :wasm do
+  gem "tzinfo-data"
 end
