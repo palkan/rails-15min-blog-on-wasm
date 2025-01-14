@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -10,6 +11,14 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        boot: resolve(__dirname, 'boot.html'),
+      },
+    },
   },
   plugins: [
     VitePWA({

@@ -77,11 +77,9 @@ self.addEventListener("install", (event) => {
 const rackHandler = new RackHandler(initVM, { assumeSSL: true });
 
 self.addEventListener("fetch", (event) => {
-  const bootResources = ["/boot", "/boot.js", "/boot.html", "/rails.sw.js"];
+  const bootResources = /\/(boot|rails\.sw).*\.(js|html)/;
 
-  if (
-    bootResources.find((r) => new URL(event.request.url).pathname.endsWith(r))
-  ) {
+  if (bootResources.test(new URL(event.request.url).pathname)) {
     console.log(
       "[rails-web] Fetching boot files from network:",
       event.request.url,
