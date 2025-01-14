@@ -18,23 +18,42 @@ async function registerServiceWorker() {
 }
 
 async function boot({ bootMessage, bootProgress, bootConsoleOutput }) {
+  bootConsoleOutput.textContent += "Booting...\n";
   if (!("serviceWorker" in navigator)) {
     console.error("Service Worker is not supported in this browser.");
+    bootConsoleOutput.textContent =
+      "Service Worker is not available in this browser\n";
+    bootProgress.remove();
+    return;
+  }
+
+  if (
+    (navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")) ||
+    navigator.userAgent.includes("iPhone")
+  ) {
+    console.error("Rails on Wasm doesn't work in this browser yet.");
+    bootConsoleOutput.textContent =
+      "Sorry, Safari is not supported by Rails on Wasm yet :(\n(NOTE: all browsers on iOS are Safari-driven).\n";
+    bootProgress.remove();
     return;
   }
 
   if (!navigator.serviceWorker.controller) {
     await registerServiceWorker();
 
-    bootMessage.textContent = "Waiting for Service Worker to activate...";
+    bootConsoleOutput.textContent +=
+      "Waiting for Service Worker to activate...\n";
   } else {
     console.log("Service Worker already active.");
+    bootConsoleOutput.textContent += "Service Worker already active.\n";
   }
 
   navigator.serviceWorker.addEventListener("message", function (event) {
     switch (event.data.type) {
       case "progress": {
-        bootMessage.textContent = event.data.step;
+        // bootMessage.textContent = event.data.step;
+        bootConsoleOutput.textContent += event.data.step + "\n";
         bootProgress.value = event.data.value;
         break;
       }
@@ -63,8 +82,8 @@ async function init() {
   if (!registration) {
     return;
   }
-  bootMessage.textContent = "Service Worker Ready";
-  bootProgress.value = 100;
+  // bootMessage.textContent = "Service Worker Ready";
+  // bootProgress.value = 100;
 
   const launchButton = document.getElementById("launch-button");
   launchButton.disabled = false;
@@ -83,12 +102,14 @@ async function init() {
   const reloadButton = document.getElementById("reload-button");
   reloadButton.disabled = false;
   reloadButton.addEventListener("click", async function () {
+    bootConsoleOutput.textContent = "Reloading Rails...\n";
     registration.active.postMessage({ type: "reload-rails" });
   });
 
   const reloadDebugButton = document.getElementById("reload-debug-button");
   reloadDebugButton.disabled = false;
   reloadDebugButton.addEventListener("click", async function () {
+    bootConsoleOutput.textContent = "Reloading Rails (w/ debug log level)...\n";
     registration.active.postMessage({ type: "reload-rails", debug: true });
   });
 }

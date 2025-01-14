@@ -1,24 +1,5 @@
-# README
+# Ruby on Rails Blog on Wasm
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo application for the [Ruby on Rails on WebAssembly, the full-stack in-browser journey][the-post] article.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[the-post]: https://web.dev
