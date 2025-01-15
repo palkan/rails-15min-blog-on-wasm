@@ -30,6 +30,9 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+# Files
+gem "activestorage_database", group: [:default, :wasm]
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -40,7 +43,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -64,7 +67,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "wasmify-rails", "~> 0.2.0", group: [:default, :wasm]
+gem "wasmify-rails", "~> 0.2.2", group: [:default, :wasm]
 
 group :wasm do
   gem "tzinfo-data"

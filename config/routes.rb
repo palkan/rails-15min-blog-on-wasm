@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "posts#index"
+
+  mount ActivestorageDatabase::Engine => "/activestorage_database"
 end

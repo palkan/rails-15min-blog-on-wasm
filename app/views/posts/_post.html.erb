@@ -1,17 +1,26 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= post.title %>
-  </p>
+<%= link_to "Back to posts", posts_path, class: "text-blue-600 hover:text-blue-800 mb-4 block" %>
+<div id="<%= dom_id post %>" class="max-w-2xl min-w-[320px] mx-auto my-8">
+  <article class="prose">
+    <div class="sm:flex sm:justify-between sm:items-start gap-2">
+      <h1 class="text-3xl font-bold mb-2"><%= post.title %></h1>
+      <div class="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+        <%= link_to "Edit", edit_post_path(@post), class: "text-blue-600 hover:text-blue-800" %>
+        <%= button_to "Delete", @post, method: :delete, class: "text-red-600 hover:text-red-800 bg-transparent border-0 p-0 cursor-pointer" %>
+      </div>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
-    <%= post.date %>
-  </p>
+    <div class="text-gray-600 text-sm mb-6">
+      <%= post.date.strftime("%B %d, %Y") %>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= post.body %>
-  </p>
+    <% if post.cover.attached? %>
+      <div class="h-72 flex items-center mb-6 bg-gray-100 rounded-lg overflow-hidden">
+        <%= image_tag post.cover %>
+      </div>
+    <% end %>
 
+    <div class="prose">
+      <%= post.body %>
+    </div>
+  </article>
 </div>

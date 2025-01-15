@@ -48,6 +48,8 @@ const initVM = async (progress, opts = {}) => {
   progress?.updateStep("Preparing database...");
   vm.eval("ActiveRecord::Tasks::DatabaseTasks.prepare_all");
 
+  progress?.updateStep("The app is ready!");
+
   redirectConsole = false;
 
   return vm;
