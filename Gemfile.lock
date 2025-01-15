@@ -59,6 +59,8 @@ GEM
       activerecord (= 8.0.1)
       activesupport (= 8.0.1)
       marcel (~> 1.0)
+    activestorage_database (2.1)
+      rails (>= 7.0)
     activesupport (8.0.1)
       base64
       benchmark (>= 0.3)
@@ -109,6 +111,16 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-aarch64-linux-musl)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm-linux-musl)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86-linux-musl)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -116,6 +128,9 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
+    image_processing (1.13.0)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.0.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -152,6 +167,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
@@ -273,6 +289,9 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
+    ruby-vips (2.2.2)
+      ffi (~> 1.12)
+      logger
     ruby_wasm (2.7.0)
     ruby_wasm (2.7.0-aarch64-linux)
     ruby_wasm (2.7.0-aarch64-linux-musl)
@@ -351,7 +370,7 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.2)
     useragent (0.16.11)
-    wasmify-rails (0.2.0)
+    wasmify-rails (0.2.2)
       js (>= 2.6, < 3.0)
       railties (>= 7.0, < 9.0)
       ruby_wasm (>= 2.6, < 3.0)
@@ -385,10 +404,12 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  activestorage_database
   bootsnap
   brakeman
   capybara
   debug
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kamal
@@ -406,7 +427,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
-  wasmify-rails (~> 0.2.0)
+  wasmify-rails (~> 0.2.2)
   web-console
 
 BUNDLED WITH

@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(date: Date.today)
   end
 
   # GET /posts/1/edit
@@ -65,6 +65,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.expect(post: [ :title, :date, :body ])
+      params.expect(post: [ :title, :date, :body, :cover ])
     end
 end

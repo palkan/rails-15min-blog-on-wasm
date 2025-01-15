@@ -10,12 +10,19 @@
     <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="posts" class="min-w-full">
+  <div id="posts" class="min-w-full mt-4">
     <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "Show this post", post, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+      <div class="flex items-center space-x-4 mb-4">
+        <% if post.cover.attached? %>
+          <div class="w-16 h-16 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
+            <%= image_tag post.cover, class: "w-full h-full object-cover" %>
+          </div>
+        <% end %>
+        <div>
+          <%= link_to post.title, post, class: "text-blue-600 hover:text-blue-800 hover:underline font-medium" %>
+          <span class="text-gray-500 text-sm ml-2"><%= post.date.strftime("%B %d, %Y") %></span>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

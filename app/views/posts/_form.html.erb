@@ -22,6 +22,35 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :cover %>
+    <%= form.file_field :cover, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full", onchange: "previewImage(event)" %>
+  </div>
+
+  <div class="my-5">
+    <% if post.cover.attached? %>
+      <%= image_tag post.cover, class: "w-full h-64 object-cover", id: "coverImagePreview" %>
+    <% else %>
+      <img id="coverImagePreview" class="hidden w-full h-64 object-cover">
+    <% end %>
+  </div>
+
+  <script>
+    function previewImage(event) {
+      const input = event.target;
+      const preview = document.getElementById('coverImagePreview');
+      preview.classList.remove('hidden');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+  <div class="my-5">
     <%= form.label :body %>
     <%= form.textarea :body, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
