@@ -112,6 +112,13 @@ async function init() {
     bootConsoleOutput.textContent = "Reloading Rails (w/ debug log level)...\n";
     registration.active.postMessage({ type: "reload-rails", debug: true });
   });
+
+  const avoButton = document.getElementById("avo-button");
+  avoButton.disabled = false;
+  avoButton.addEventListener("click", async function () {
+    // Open in a new window
+    window.open("/avo", "_blank");
+  });
 }
 
 init();

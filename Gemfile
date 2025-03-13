@@ -72,3 +72,5 @@ gem "wasmify-rails", "~> 0.2.2", group: [:default, :wasm]
 group :wasm do
   gem "tzinfo-data"
 end
+
+gem "avo", ">= 3.2", group: [:default, :wasm]

@@ -73,6 +73,18 @@
         background-color: #ccc;
         color: #666;
       }
+      #avo-button {
+        background-color: rgb(8, 134, 222);
+        color: #fff;
+        border: none;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+      }
+      #avo-button:disabled {
+        background-color: #ccc;
+        color: #666;
+      }
       #reload-debug-button {
         background-color: rgb(159, 166, 40);
         color: #000;
@@ -130,6 +142,7 @@
           Reload Rails (debug mode)
         </button>
         <button id="reboot-button" disabled>Hard Reset*</button>
+        <button id="avo-button" disabled>Avo</button>
       </p>
 
       <div id="boot-message" style="display: none"></div>
