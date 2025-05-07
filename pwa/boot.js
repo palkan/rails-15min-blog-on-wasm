@@ -28,9 +28,14 @@ async function boot({ bootMessage, bootProgress, bootConsoleOutput }) {
   }
 
   if (
-    (navigator.userAgent.includes("Safari") &&
-      !navigator.userAgent.includes("Chrome")) ||
-    navigator.userAgent.includes("iPhone")
+    (
+      (
+        navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")
+      ) ||
+      navigator.userAgent.includes("iPhone")
+    ) && (
+      typeof Error.isError !== "function"
+    )
   ) {
     console.error("Rails on Wasm doesn't work in this browser yet.");
     bootConsoleOutput.textContent =
